@@ -1,5 +1,9 @@
 # go-random
 
+![Test & Build status](https://github.com/teran/go-random/actions/workflows/go.yml/badge.svg)
+[![Go Report Card](https://goreportcard.com/badge/github.com/teran/go-random)](https://goreportcard.com/report/github.com/teran/go-random)
+[![Go Reference](https://pkg.go.dev/badge/github.com/teran/go-random.svg)](https://pkg.go.dev/github.com/teran/go-random)
+
 Helper library to generate a random sequences for various purposes
 
 ## Usage example
