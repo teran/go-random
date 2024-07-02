@@ -6,6 +6,8 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/pkg/errors"
+
 	"github.com/teran/go-random"
 )
 
@@ -27,8 +29,23 @@ func main() {
 		os.Exit(1)
 	}
 
-	sets := strings.Split(os.Args[1], "+")
+	charList, err := characterSetByName(os.Args[1])
+	if err != nil {
+		panic(err)
+	}
+
+	length, err := strconv.ParseUint(os.Args[2], 10, 64)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(random.String(charList, uint(length)))
+}
+
+func characterSetByName(name string) ([]rune, error) {
+	sets := strings.Split(name, "+")
 	charList := []rune{}
+
 	for _, set := range sets {
 		switch set {
 		case "numeric":
@@ -48,14 +65,9 @@ func main() {
 		case "alphanumeric":
 			charList = append(charList, random.AlphaNumeric...)
 		default:
-			panic(fmt.Sprintf("unexpected set name: %s", set))
+			return nil, errors.Errorf("unexpected set name: `%s`", set)
 		}
 	}
 
-	length, err := strconv.ParseUint(os.Args[2], 10, 64)
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Println(random.String(charList, uint(length)))
+	return charList, nil
 }

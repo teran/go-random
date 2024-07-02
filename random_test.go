@@ -11,7 +11,7 @@ func TestString(t *testing.T) {
 
 	samples := map[string]struct{}{}
 	for i := 0; i < 1024; i++ {
-		samples[String(All, 128)] = struct{}{}
+		samples[String(AlphaNumericWithSpecial, 128)] = struct{}{}
 	}
 
 	r.Len(samples, 1024)
