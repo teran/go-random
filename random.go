@@ -5,13 +5,15 @@ import (
 )
 
 var (
-	Numeric    = []rune("0123456789")
-	AlphaLower = []rune("abcdefghijklmnopqrstuvwxyz")
-	AlphaUpper = []rune("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-	Special    = []rune("!@#$%^&*()_-+=[]{}\\|/?>.<,'\"`~")
+	Numeric      = []rune("0123456789")
+	AlphaLower   = []rune("abcdefghijklmnopqrstuvwxyz")
+	AlphaUpper   = []rune("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+	RussianLower = []rune("абвгдеёжзийклмнопрстуфхцчшщъыьэюя")
+	RussianUpper = []rune("АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ")
+	Special      = []rune("!@#$%^&*()_-+=[]{}\\|/?>.<,'\"`~")
 
-	AlphaNumeric = append(append(AlphaLower, AlphaUpper...), Numeric...)
-	All          = append(AlphaNumeric, Special...)
+	AlphaNumeric            = append(append(AlphaLower, AlphaUpper...), Numeric...)
+	AlphaNumericWithSpecial = append(AlphaNumeric, Special...)
 )
 
 func String(set []rune, l uint) string {
